@@ -1,0 +1,27 @@
+name: IndexNow - BlogSpot
+
+on:
+  push:
+    branches:
+      - main  # Branch utama yang kamu gunakan
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest  # Jalankan di lingkungan Ubuntu
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Versi Node.js yang digunakan
+
+      - name: Install dependencies
+        run: |
+          npm install axios  # Install axios untuk mengirim request HTTP
+
+      - name: Run IndexNow Script
+        run: |
+          node indexnow.js  # Menjalankan script indexnow.js
